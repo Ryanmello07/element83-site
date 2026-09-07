@@ -1,7 +1,9 @@
 import { CubeLogo } from '@/components/CubeLogo';
 import { useReveal } from '@/lib/useReveal';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 export function About() {
+  usePageMeta('about', 'about element 83 — a very small studio making quiet, unsettling games.');
   const heading = useReveal<HTMLDivElement>();
   const body = useReveal<HTMLDivElement>();
 
@@ -11,9 +13,9 @@ export function About() {
       <div className="max-w-5xl mx-auto">
         <div ref={heading.ref} data-shown={heading.shown} className="reveal">
           <div className="text-xs uppercase tracking-[0.4em] text-haze-400 mb-3">studio</div>
-          <h2 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
+          <h1 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
             about us<span className="text-haze-500">.</span>
-          </h2>
+          </h1>
         </div>
 
         <div

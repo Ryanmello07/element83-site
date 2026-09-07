@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Clock } from 'lucide-react';
 import { useReveal } from '@/lib/useReveal';
+import { GlitchTitle } from '@/components/GlitchTitle';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 function MisanthropicArt() {
   return (
@@ -65,41 +67,8 @@ function MisanthropicArt() {
   );
 }
 
-function GlitchTitle({ children }: { children: string }) {
-  const [glitching, setGlitching] = useState(false);
-
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-    let alive = true;
-    const loop = () => {
-      if (!alive) return;
-      setGlitching(true);
-      window.setTimeout(() => setGlitching(false), 380);
-      const next = 4000 + Math.random() * 6000;
-      window.setTimeout(loop, next);
-    };
-    const t = window.setTimeout(loop, 3000);
-    return () => {
-      alive = false;
-      window.clearTimeout(t);
-    };
-  }, []);
-
-  return (
-    <span
-      className="glitch font-extrabold text-mist-50 text-4xl md:text-6xl tracking-tight"
-      data-text={children}
-      data-glitch={glitching}
-    >
-      {children}
-    </span>
-  );
-}
-
 export function Games() {
+  usePageMeta('games', 'the element 83 portfolio: misanthropic, upcoming brews, and experiments.');
   const heading = useReveal<HTMLDivElement>();
   const card = useReveal<HTMLDivElement>();
 
@@ -109,9 +78,9 @@ export function Games() {
       <div className="max-w-6xl mx-auto">
         <div ref={heading.ref} data-shown={heading.shown} className="reveal">
           <div className="text-xs uppercase tracking-[0.4em] text-haze-400 mb-3">portfolio</div>
-          <h2 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
+          <h1 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
             our games<span className="text-haze-500">.</span>
-          </h2>
+          </h1>
           <p className="mt-6 max-w-2xl text-mist-200 leading-relaxed">
             dive into our portfolio of acclaimed games. each title is a product of love and hardwork.
           </p>
@@ -125,7 +94,7 @@ export function Games() {
               <div className="text-[10px] uppercase tracking-[0.5em] text-haze-400 mb-4">
                 featured title
               </div>
-              <GlitchTitle>MISANTHROPIC</GlitchTitle>
+              <GlitchTitle className="text-4xl md:text-6xl">MISANTHROPIC</GlitchTitle>
               <p className="text-script text-2xl mt-4">a quiet horror</p>
               <p className="mt-6 text-mist-200 leading-relaxed max-w-lg">
                 it's 2027. AGI has been achieved, but what does it mean for the world?
@@ -133,10 +102,10 @@ export function Games() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a href="#" className="btn-ghost">
+                <Link to="/games/misanthropic" className="btn-ghost">
                   check it out
-                  <ArrowUpRight size={16} />
-                </a>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
                 <div className="flex items-center gap-2 text-mist-300 text-xs uppercase tracking-[0.3em]">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-haze-500 shadow-glow" />
                   narrative · single-player

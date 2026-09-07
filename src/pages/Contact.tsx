@@ -1,15 +1,15 @@
-import { useState } from 'react';
 import {
   Mail,
   MessageCircle,
   Twitter,
   Youtube,
   Gamepad2,
-  Copy,
-  Check,
   ArrowUpRight,
 } from 'lucide-react';
 import { useReveal } from '@/lib/useReveal';
+import { CopyButton } from '@/components/CopyButton';
+import { ComingSoon } from '@/components/ComingSoon';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const EMAIL = 'hello@element83.games';
 
@@ -21,19 +21,9 @@ const socials = [
 ];
 
 export function Contact() {
+  usePageMeta('contact', 'say hi to element 83 — we read everything, we answer most things.');
   const heading = useReveal<HTMLDivElement>();
   const card = useReveal<HTMLDivElement>();
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* ignored */
-    }
-  };
 
   return (
     <section className="relative pt-32 pb-16 px-6">
@@ -41,9 +31,9 @@ export function Contact() {
       <div className="max-w-4xl mx-auto">
         <div ref={heading.ref} data-shown={heading.shown} className="reveal">
           <div className="text-xs uppercase tracking-[0.4em] text-haze-400 mb-3">say hi</div>
-          <h2 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
+          <h1 className="font-extrabold lowercase text-mist-50 text-5xl md:text-7xl tracking-tight">
             contact<span className="text-haze-500">.</span>
-          </h2>
+          </h1>
           <p className="mt-6 max-w-xl text-mist-200 leading-relaxed">
             got a question, a kind word, or a strange dream to share? drop us a line.
             we read everything, we answer most things.
@@ -77,20 +67,14 @@ export function Contact() {
               </div>
 
               <div className="flex items-center gap-3 shrink-0">
-                <button onClick={copy} className="btn-ghost" aria-label="copy email address">
-                  {copied ? (
-                    <>
-                      <Check size={14} /> copied
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={14} /> copy
-                    </>
-                  )}
-                </button>
+                <CopyButton
+                  text={EMAIL}
+                  label="copy"
+                  announcement="email address copied"
+                />
                 <a href={`mailto:${EMAIL}`} className="btn-ghost">
                   open mail
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -100,14 +84,11 @@ export function Contact() {
                 <div className="text-xs uppercase tracking-[0.35em] text-mist-300 mb-3">follow</div>
                 <div className="flex items-center gap-3">
                   {socials.map(({ icon: Icon, label }) => (
-                    <a
+                    <ComingSoon
                       key={label}
-                      href="#"
-                      aria-label={label}
-                      className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-mist-200 hover:text-mist-50 hover:border-haze-500/70 hover:shadow-glow transition"
-                    >
-                      <Icon size={16} />
-                    </a>
+                      label={label}
+                      icon={<Icon size={16} aria-hidden="true" />}
+                    />
                   ))}
                 </div>
               </div>

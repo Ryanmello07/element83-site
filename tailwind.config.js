@@ -25,6 +25,10 @@ export default {
           600: '#8a6bee',
           700: '#6b4fd0',
         },
+        signal: {
+          rose: '#ff3c78',
+          cyan: '#46d2ff',
+        },
       },
       fontFamily: {
         sans: ['Nunito', 'system-ui', 'sans-serif'],
