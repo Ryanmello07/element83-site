@@ -18,7 +18,7 @@ import type { FaqItem } from '@/components/contact/FaqAccordion';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { EASE_OUT } from '@/lib/motion';
 
-const EMAIL = 'hello@element83.games';
+const EMAIL = 'hello@element83.org';
 
 const socials = [
   { icon: Twitter, label: 'twitter / x' },
@@ -69,7 +69,7 @@ const chipItem: Variants = {
 export function Contact() {
   usePageMeta(
     'contact',
-    'reach element 83: hello@element83.games. we read everything, we answer most things.',
+    'reach element 83: hello@element83.org. we read everything, we answer most things.',
   );
   const reduced = useReducedMotion();
 

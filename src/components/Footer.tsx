@@ -41,11 +41,11 @@ export function Footer() {
         <div className="md:justify-self-center">
           <div className="text-xs uppercase tracking-[0.3em] text-mist-300 mb-3">say hi</div>
           <a
-            href="mailto:hello@element83.games"
+            href="mailto:hello@element83.org"
             className="inline-flex items-center gap-2 text-mist-100 hover:text-haze-400 transition"
           >
             <Mail size={16} aria-hidden="true" />
-            hello@element83.games
+            hello@element83.org
           </a>
         </div>
 
