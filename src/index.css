@@ -387,6 +387,17 @@
   }
 }
 
+/* subtle grain opacity pulse (referenced by .overlay::before) */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.09;
+  }
+}
+
 @keyframes grain-shift {
   0%,
   100% {

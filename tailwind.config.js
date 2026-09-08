@@ -52,27 +52,15 @@ export default {
           '60%': { opacity: '1', filter: 'grayscale(0.6) brightness(0.7)' },
           '100%': { opacity: '1', filter: 'grayscale(0) brightness(1)' },
         },
-        scanmove: {
-          '0%': { backgroundPosition: '0 0' },
-          '100%': { backgroundPosition: '0 6px' },
-        },
         flicker: {
           '0%,100%': { opacity: '0.06' },
           '50%': { opacity: '0.09' },
-        },
-        glitch: {
-          '0%,100%': { transform: 'translate(0,0)', textShadow: 'none' },
-          '20%': { transform: 'translate(-1px,0)', textShadow: '2px 0 rgba(255,0,80,0.7), -2px 0 rgba(0,200,255,0.7)' },
-          '40%': { transform: 'translate(1px,0)', textShadow: '-2px 0 rgba(255,0,80,0.7), 2px 0 rgba(0,200,255,0.7)' },
-          '60%': { transform: 'translate(0,1px)', textShadow: '1px 0 rgba(255,0,80,0.6), -1px 0 rgba(0,200,255,0.6)' },
-          '80%': { transform: 'translate(0,-1px)', textShadow: 'none' },
         },
       },
       animation: {
         'fade-in': 'fade-in 0.6s ease-out both',
         'fade-in-slow': 'fade-in-slow 1.2s ease-out both',
         'cube-reveal': 'cube-reveal 1.6s ease-out both',
-        scanmove: 'scanmove 1s steps(6) infinite',
         flicker: 'flicker 3s ease-in-out infinite',
       },
     },
